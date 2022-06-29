@@ -6,7 +6,7 @@ import OpenLake from "../../assets/opensea.png";
 import { AiOutlineSearch } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg';
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
-
+import { useDisconnect } from "@thirdweb-dev/react";
 
 // styles for header
 const style = {
@@ -22,6 +22,7 @@ const style = {
 };
 
 const Header = () => {
+  const disconnectMetaMask = useDisconnect()
   return (
     <div className={style.wrapper}>
       <Link href="/">
@@ -59,8 +60,8 @@ const Header = () => {
                 <CgProfile/>
             </div>
         </Link>
-        <Link href="/wallet">
-            <div className={style.headerIcon}>
+        <Link href="/">
+            <div className={style.headerIcon} onClick={disconnectMetaMask}>
                 <MdOutlineAccountBalanceWallet/>
             </div>
         </Link>
